@@ -1,2 +1,4 @@
-pre{color:#f0c;background:url(src/img/grass-bg.jpg) no-repeat}
+body{padding:20px}pre{color:#00f}
+
+body{font:16px sans-serif;padding:20px}pre{background:url(img/grass-bg.jpg) no-repeat;color:#f0c;display:inline-block;font:bold 14px monospace;padding:30px;text-shadow:1px 1px 3px rgba(0,0,0,0.7)}
 

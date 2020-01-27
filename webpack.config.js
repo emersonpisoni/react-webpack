@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -13,11 +14,6 @@ module.exports = {
   module: {
     rules: [
       {
-        exclude: [/node_modules/],
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
         test: /\.js$/,
         exclude: [/node_modules/],
         use: {
@@ -28,7 +24,7 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           "css-loader",
@@ -40,7 +36,8 @@ module.exports = {
         use: {
           loader: "file-loader",
           options: {
-            name: "[path][name].[ext]"
+            name: "[name].[ext]",
+            outputPath: 'img/'
           }
         }
       }
@@ -53,6 +50,12 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css"
+    }),
+    new HtmlWebpackPlugin({
+      myPageHeader: 'Sumicity',
+      title: 'Sumicity',
+      template: './index.html',
+      filename: "./index.html" //relative to root of the application
     })
   ]
 };
